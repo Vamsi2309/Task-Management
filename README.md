@@ -1,11 +1,5 @@
 # TaskFlow — Task Management Dashboard
 
-A modern, feature-rich task management dashboard built with React 18, TypeScript, Vite, and Tailwind CSS.
-
-![TaskFlow Dashboard](https://img.shields.io/badge/React-18-blue?logo=react) ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript) ![Vite](https://img.shields.io/badge/Vite-5-purple?logo=vite) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-blue?logo=tailwindcss)
-
----
-
 ## Features
 
 ### Core Features
@@ -91,42 +85,6 @@ __tests__/
 
 ---
 
-## Drag-and-Drop Component
-
-The drag-and-drop functionality is built as a **standalone, reusable component** located at `src/components/common/DragAndDrop/DragAndDrop.tsx`.
-
-### Key Design Decisions
-- Uses the **native HTML Drag and Drop API** (no external libraries)
-- Fully **generic** — works with any data type via TypeScript generics
-- Supports both **vertical list** and **CSS grid** layouts
-- Extensively **commented** for learning purposes
-
-### How to Reuse
-
-```tsx
-import { DragAndDropList } from '@/components/common/DragAndDrop';
-
-<DragAndDropList
-  items={myItems}                             // Your data array
-  keyExtractor={(item) => item.id}            // Unique key per item
-  renderItem={(item, index, isDragging) => (  // Your custom renderer
-    <MyCard data={item} faded={isDragging} />
-  )}
-  onReorder={(fromIndex, toIndex) => {        // Handle the reorder
-    reorderMyItems(fromIndex, toIndex);
-  }}
-  grid={false}                                // true for grid layout
-/>
-```
-
-### How It Works (Step by Step)
-1. Each item is wrapped in a `<div draggable="true">`
-2. `onDragStart` — stores the index of the grabbed item
-3. `onDragOver` — tracks the current hover target for visual feedback
-4. `onDrop` — fires `onReorder(fromIndex, toIndex)` so the parent updates state
-5. `onDragEnd` — cleans up all visual indicators
-
----
 
 ## Design Decisions
 
@@ -138,17 +96,11 @@ import { DragAndDropList } from '@/components/common/DragAndDrop';
 
 4. **TypeScript Strict Mode** — All types are explicit, no `any` usage. Enums for Priority and Status ensure type safety across the app.
 
-5. **React Query** — Included and configured for future API integration. Currently the app uses localStorage, but swapping to API calls requires minimal changes.
-
 6. **Accessibility** — Modals trap focus, use `aria-modal`, close on Escape. Buttons have `aria-label`. List items have proper ARIA roles.
 
 ---
 
 ## Setup & Installation
-
-### Prerequisites
-- **Node.js** ≥ 18
-- **npm** ≥ 9
 
 ### Steps
 
@@ -172,31 +124,30 @@ npm run dev
 # Build for production
 npm run build
 
-# Preview production build
-npm run preview
-
 # Run tests
 npm test
 
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
 ```
 
 ---
 
 ## Screenshots
 
+![alt text](image.png)
+
 ### Light Mode — List View
 > The default view showing all tasks in a clean list layout with status counts.
+
+![alt text](image-1.png)
 
 ### Dark Mode — Card View
 > Toggle to dark mode and card view for a grid-based layout with colored priority borders.
 
+![alt text](image-2.png)
 ### Create Task Modal
 > Modal dialog with validated form fields for title, description, priority, and due date.
+
+![alt text](image-3.png)
 
 ### Mobile Responsive
 > Fully responsive layout that stacks gracefully on smaller screens.
@@ -207,26 +158,8 @@ npm run test:coverage
 
 The app is ready for deployment on any static hosting platform:
 
-```bash
-# Build the production bundle
-npm run build
-
-# The output is in the `dist/` folder
-# Upload to Vercel, Netlify, or GitHub Pages
-```
-
-### Vercel (Recommended)
-```bash
-npx vercel
-```
-
 ### Netlify
-```bash
-npx netlify deploy --prod --dir=dist
-```
+
 
 ---
 
-## License
-
-This project was created as a coding assignment submission.
