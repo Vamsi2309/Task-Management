@@ -156,10 +156,10 @@ npm test
 
 ## Deployment
 
-The app is ready for deployment on any static hosting platform:
+The app is deployed and accessible at:
 
-### Netlify
-
+### Netlify (Live URL)
+ https://task-management-product.netlify.app/
 
 ---
 
