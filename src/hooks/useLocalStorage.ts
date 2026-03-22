@@ -1,19 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
-/**
- * A generic hook that syncs React state with localStorage.
- *
- * - Reads the stored JSON on first render (falls back to `initialValue`).
- * - Writes to localStorage on every `setValue` call.
- * - Handles serialisation / deserialisation internally.
- *
- * @param key        The localStorage key.
- * @param initialValue  Default value when nothing is stored.
- */
 export function useLocalStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, (value: T | ((prev: T) => T)) => void] {
+  
   // Lazy initialiser — only reads localStorage once on mount.
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
@@ -38,7 +29,7 @@ export function useLocalStorage<T>(
         return nextValue;
       });
     },
-    [key]
+    [key],
   );
 
   return [storedValue, setValue];

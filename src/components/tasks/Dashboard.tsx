@@ -1,24 +1,24 @@
-import React, { useState, useCallback } from 'react';
-import { Task, TaskFilters, TaskFormData, ViewMode } from '@/types/task';
-import { useTasks } from '@/hooks/useTasks';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { Modal, ConfirmDialog, Button } from '@/components/common';
-import { Header } from '@/components/layout/Header';
-import { TaskStats } from './TaskStats';
-import { FilterBar } from './FilterBar';
-import { TaskForm } from './TaskForm';
-import { TaskList } from './TaskList';
+import React, { useState, useCallback } from "react";
+import { Task, TaskFilters, TaskFormData, ViewMode } from "@/types/task";
+import { useTasks } from "@/hooks/useTasks";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { Modal, ConfirmDialog, Button } from "@/components/common";
+import { Header } from "@/components/layout/Header";
+import { TaskStats } from "./TaskStats";
+import { FilterBar } from "./FilterBar";
+import { TaskForm } from "./TaskForm";
+import { TaskList } from "./TaskList";
 
 export function Dashboard() {
   const [filters, setFilters] = useState<TaskFilters>({
-    search: '',
-    status: 'all',
-    priority: 'all',
+    search: "",
+    status: "all",
+    priority: "all",
   });
 
   const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
-    'taskflow_viewmode',
-    'list'
+    "taskflow_viewmode",
+    "list",
   );
 
   const {
@@ -40,7 +40,7 @@ export function Dashboard() {
       addTask(data);
       setIsCreateOpen(false);
     },
-    [addTask]
+    [addTask],
   );
 
   const handleEdit = useCallback(
@@ -50,7 +50,7 @@ export function Dashboard() {
         setEditingTask(null);
       }
     },
-    [editingTask, updateTask]
+    [editingTask, updateTask],
   );
 
   const handleDelete = useCallback(() => {
@@ -79,7 +79,7 @@ export function Dashboard() {
                 onChange={setFilters}
                 viewMode={viewMode}
                 onViewModeChange={setViewMode}
-              />  
+              />
             </div>
             <Button
               variant="primary"

@@ -13,10 +13,6 @@ interface ConfirmDialogProps {
   variant?: 'danger' | 'primary';
 }
 
-/**
- * Reusable confirmation dialog built on top of Modal.
- * Used before destructive actions like deleting a task.
- */
 export function ConfirmDialog({
   isOpen,
   onClose,

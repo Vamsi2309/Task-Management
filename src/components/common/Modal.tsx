@@ -56,7 +56,6 @@ export function Modal({
     >
   
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-
       <div
         ref={contentRef}
         tabIndex={-1}

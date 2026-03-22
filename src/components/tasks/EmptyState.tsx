@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface EmptyStateProps {
   title: string;
@@ -6,9 +6,6 @@ interface EmptyStateProps {
   action?: React.ReactNode;
 }
 
-/**
- * Displayed when no tasks match the current filters.
- */
 export function EmptyState({ title, description, action }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center animate-fade-in">

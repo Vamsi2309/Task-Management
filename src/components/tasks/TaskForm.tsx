@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Priority, TaskFormData, Task } from '@/types/task';
-import { Button } from '@/components/common';
+import React, { useState, useEffect } from "react";
+import { Priority, TaskFormData, Task } from "@/types/task";
+import { Button } from "@/components/common";
 
 interface TaskFormProps {
   initialData?: Task;
@@ -8,12 +8,11 @@ interface TaskFormProps {
   onCancel: () => void;
 }
 
-
 export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [priority, setPriority] = useState<Priority>(Priority.Medium);
-  const [dueDate, setDueDate] = useState('');
+  const [dueDate, setDueDate] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const isEdit = Boolean(initialData);
@@ -27,13 +26,12 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
     }
   }, [initialData]);
 
-
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};
 
-    if (!title.trim()) newErrors.title = 'Title is required';
-    if (!description.trim()) newErrors.description = 'Description is required';
-    if (!dueDate) newErrors.dueDate = 'Due date is required';
+    if (!title.trim()) newErrors.title = "Title is required";
+    if (!description.trim()) newErrors.description = "Description is required";
+    if (!dueDate) newErrors.dueDate = "Due date is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -51,7 +49,6 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
     });
   };
 
- 
   const inputClass = `
     w-full px-3.5 py-2.5 rounded-xl text-sm
     bg-gray-50 dark:bg-gray-800
@@ -63,9 +60,9 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
   `;
 
   const labelClass =
-    'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5';
+    "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5";
 
-  const errorClass = 'text-xs text-red-500 mt-1';
+  const errorClass = "text-xs text-red-500 mt-1";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -79,7 +76,7 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="e.g. Design landing page"
-          className={`${inputClass} ${errors.title ? 'border-red-400 focus:ring-red-400/40' : ''}`}
+          className={`${inputClass} ${errors.title ? "border-red-400 focus:ring-red-400/40" : ""}`}
           autoFocus
         />
         {errors.title && <p className={errorClass}>{errors.title}</p>}
@@ -95,7 +92,7 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Describe the task in detail..."
-          className={`${inputClass} resize-none ${errors.description ? 'border-red-400 focus:ring-red-400/40' : ''}`}
+          className={`${inputClass} resize-none ${errors.description ? "border-red-400 focus:ring-red-400/40" : ""}`}
         />
         {errors.description && (
           <p className={errorClass}>{errors.description}</p>
@@ -128,7 +125,7 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
-            className={`${inputClass} ${errors.dueDate ? 'border-red-400 focus:ring-red-400/40' : ''}`}
+            className={`${inputClass} ${errors.dueDate ? "border-red-400 focus:ring-red-400/40" : ""}`}
           />
           {errors.dueDate && <p className={errorClass}>{errors.dueDate}</p>}
         </div>
@@ -139,7 +136,7 @@ export function TaskForm({ initialData, onSubmit, onCancel }: TaskFormProps) {
           Cancel
         </Button>
         <Button variant="primary" type="submit">
-          {isEdit ? 'Save Changes' : 'Create Task'}
+          {isEdit ? "Save Changes" : "Create Task"}
         </Button>
       </div>
     </form>

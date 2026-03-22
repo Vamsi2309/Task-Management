@@ -1,13 +1,12 @@
-
 export enum Priority {
-  Low = 'Low',
-  Medium = 'Medium',
-  High = 'High',
+  Low = "Low",
+  Medium = "Medium",
+  High = "High",
 }
 
 export enum Status {
-  Pending = 'Pending',
-  Completed = 'Completed',
+  Pending = "Pending",
+  Completed = "Completed",
 }
 
 export interface Task {
@@ -15,7 +14,7 @@ export interface Task {
   title: string;
   description: string;
   priority: Priority;
-  dueDate: string; 
+  dueDate: string;
   status: Status;
   createdAt: string;
   order: number;
@@ -30,8 +29,8 @@ export interface TaskFormData {
 
 export interface TaskFilters {
   search: string;
-  status: 'all' | Status;
-  priority: 'all' | Priority;
+  status: "all" | Status;
+  priority: "all" | Priority;
 }
 
-export type ViewMode = 'list' | 'card';
+export type ViewMode = "list" | "card";

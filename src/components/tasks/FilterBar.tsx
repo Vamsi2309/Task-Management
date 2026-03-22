@@ -1,5 +1,5 @@
-import React from 'react';
-import { TaskFilters, Priority, Status, ViewMode } from '@/types/task';
+import React from "react";
+import { TaskFilters, Priority, Status, ViewMode } from "@/types/task";
 
 interface FilterBarProps {
   filters: TaskFilters;
@@ -18,11 +18,10 @@ export function FilterBar({
     onChange({ ...filters, ...partial });
 
   const pillBase =
-    'px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all duration-150 cursor-pointer whitespace-nowrap';
-  const pillActive =
-    'bg-brand-600 text-white shadow-sm';
+    "px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all duration-150 cursor-pointer whitespace-nowrap";
+  const pillActive = "bg-brand-600 text-white shadow-sm";
   const pillInactive =
-    'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700';
+    "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700";
 
   return (
     <div className="space-y-4">
@@ -59,12 +58,22 @@ export function FilterBar({
           />
           {filters.search && (
             <button
-              onClick={() => update({ search: '' })}
+              onClick={() => update({ search: "" })}
               className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
               aria-label="Clear search"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           )}
@@ -73,33 +82,55 @@ export function FilterBar({
         {/* View mode toggle */}
         <div className="flex items-center gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
           <button
-            onClick={() => onViewModeChange('list')}
+            onClick={() => onViewModeChange("list")}
             aria-label="List view"
             className={`
               p-2 rounded-lg transition-all duration-150
-              ${viewMode === 'list'
-                ? 'bg-white dark:bg-gray-700 shadow-sm text-brand-600 dark:text-brand-400'
-                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+              ${
+                viewMode === "list"
+                  ? "bg-white dark:bg-gray-700 shadow-sm text-brand-600 dark:text-brand-400"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               }
             `}
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
           <button
-            onClick={() => onViewModeChange('card')}
+            onClick={() => onViewModeChange("card")}
             aria-label="Card view"
             className={`
               p-2 rounded-lg transition-all duration-150
-              ${viewMode === 'card'
-                ? 'bg-white dark:bg-gray-700 shadow-sm text-brand-600 dark:text-brand-400'
-                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+              ${
+                viewMode === "card"
+                  ? "bg-white dark:bg-gray-700 shadow-sm text-brand-600 dark:text-brand-400"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               }
             `}
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+              />
             </svg>
           </button>
         </div>
@@ -107,29 +138,32 @@ export function FilterBar({
 
       {/*  Filter options */}
       <div className="flex flex-wrap gap-2 items-center">
-
-        <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Status:</span>
-        {(['all', Status.Pending, Status.Completed] as const).map((s) => (
+        <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">
+          Status:
+        </span>
+        {(["all", Status.Pending, Status.Completed] as const).map((s) => (
           <button
             key={s}
             onClick={() => update({ status: s })}
             className={`${pillBase} ${filters.status === s ? pillActive : pillInactive}`}
           >
-            {s === 'all' ? 'All' : s}
+            {s === "all" ? "All" : s}
           </button>
         ))}
         <span className="w-px h-5 bg-gray-200 dark:bg-gray-700 mx-1 hidden sm:block" />
-        <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Priority:</span>
-        {(['all', Priority.Low, Priority.Medium, Priority.High] as const).map(
+        <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">
+          Priority:
+        </span>
+        {(["all", Priority.Low, Priority.Medium, Priority.High] as const).map(
           (p) => (
             <button
               key={p}
               onClick={() => update({ priority: p })}
               className={`${pillBase} ${filters.priority === p ? pillActive : pillInactive}`}
             >
-              {p === 'all' ? 'All' : p}
+              {p === "all" ? "All" : p}
             </button>
-          )
+          ),
         )}
       </div>
     </div>

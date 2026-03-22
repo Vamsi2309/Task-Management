@@ -27,10 +27,7 @@ const sizeClasses: Record<Size, string> = {
   lg: 'px-6 py-2.5 text-base gap-2',
 };
 
-/**
- * Reusable button with variant and size support.
- * Accepts all native button props for maximum flexibility.
- */
+
 export function Button({
   variant = 'primary',
   size = 'md',

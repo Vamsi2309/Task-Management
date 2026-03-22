@@ -1,17 +1,14 @@
-import React from 'react';
-import { useTheme } from '@/context/ThemeContext';
+import React from "react";
+import { useTheme } from "@/context/ThemeContext";
 
-/**
- * Animated sun/moon toggle button for switching between light and dark mode.
- */
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
       className="
         relative w-10 h-10 rounded-xl
         bg-gray-100 dark:bg-gray-800
@@ -24,7 +21,9 @@ export function ThemeToggle() {
       {/* Sun icon */}
       <svg
         className={`w-5 h-5 absolute transition-all duration-300 ${
-          isDark ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100 text-amber-500'
+          isDark
+            ? "opacity-0 rotate-90 scale-0"
+            : "opacity-100 rotate-0 scale-100 text-amber-500"
         }`}
         fill="none"
         viewBox="0 0 24 24"
@@ -41,7 +40,9 @@ export function ThemeToggle() {
       {/* Moon icon */}
       <svg
         className={`w-5 h-5 absolute transition-all duration-300 ${
-          isDark ? 'opacity-100 rotate-0 scale-100 text-blue-400' : 'opacity-0 -rotate-90 scale-0'
+          isDark
+            ? "opacity-100 rotate-0 scale-100 text-blue-400"
+            : "opacity-0 -rotate-90 scale-0"
         }`}
         fill="none"
         viewBox="0 0 24 24"
