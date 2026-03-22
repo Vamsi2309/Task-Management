@@ -35,30 +35,24 @@ export function Dashboard() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [deletingTask, setDeletingTask] = useState<Task | null>(null);
 
-  const handleCreate = useCallback(
-    (data: TaskFormData) => {
-      addTask(data);
-      setIsCreateOpen(false);
-    },
-    [addTask],
-  );
+  const handleCreate = (data: TaskFormData) => {
+    addTask(data);
+    setIsCreateOpen(false);
+  };
 
-  const handleEdit = useCallback(
-    (data: TaskFormData) => {
-      if (editingTask) {
-        updateTask(editingTask.id, data);
-        setEditingTask(null);
-      }
-    },
-    [editingTask, updateTask],
-  );
+  const handleEdit = (data: TaskFormData) => {
+    if (editingTask) {
+      updateTask(editingTask.id, data);
+      setEditingTask(null);
+    }
+  };
 
-  const handleDelete = useCallback(() => {
+  const handleDelete = () => {
     if (deletingTask) {
       deleteTask(deletingTask.id);
       setDeletingTask(null);
     }
-  }, [deletingTask, deleteTask]);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300">

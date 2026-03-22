@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 interface DragAndDropListProps<T> {
   items: T[];
@@ -21,8 +21,8 @@ export function DragAndDropList<T>({
   const [overIndex, setOverIndex] = useState<number | null>(null);
   const dragIndexRef = useRef<number | null>(null);
 
-  const handleDragStart = useCallback(
-    (index: number) => (e: React.DragEvent) => {
+  function handleDragStart(index: number) {
+    return (e: React.DragEvent) => {
       dragIndexRef.current = index;
       setDragIndex(index);
       e.dataTransfer.effectAllowed = "move";
@@ -30,51 +30,50 @@ export function DragAndDropList<T>({
       if (e.currentTarget instanceof HTMLElement) {
         e.currentTarget.style.opacity = "0.4";
       }
-    },
-    [],
-  );
+    };
+  }
 
-  const handleDragOver = useCallback(
-    (index: number) => (e: React.DragEvent) => {
+  function handleDragOver(index: number) {
+    return (e: React.DragEvent) => {
       e.preventDefault();
       e.dataTransfer.dropEffect = "move";
       setOverIndex(index);
-    },
-    [],
-  );
+    };
+  }
 
-  const handleDrop = useCallback(
-    (toIndex: number) => (e: React.DragEvent) => {
+  function handleDrop(toIndex: number) {
+    return (e: React.DragEvent) => {
       e.preventDefault();
       const fromIndex = dragIndexRef.current;
       if (fromIndex !== null && fromIndex !== toIndex) {
         onReorder(fromIndex, toIndex);
       }
-
       dragIndexRef.current = null;
       setDragIndex(null);
       setOverIndex(null);
-    },
-    [onReorder],
-  );
+    };
+  }
 
-  const handleDragEnd = useCallback((e: React.DragEvent) => {
+  function handleDragEnd(e: React.DragEvent) {
     if (e.currentTarget instanceof HTMLElement) {
       e.currentTarget.style.opacity = "1";
     }
-
     dragIndexRef.current = null;
     setDragIndex(null);
     setOverIndex(null);
-  }, []);
+  }
 
-  const handleDragLeave = useCallback(() => {
+  function handleDragLeave() {
     setOverIndex(null);
-  }, []);
+  }
 
   return (
     <div
-      className={`${grid ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" : "flex flex-col gap-2"} ${className}`}
+      className={`${
+        grid
+          ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          : "flex flex-col gap-2"
+      } ${className}`}
       role="list"
       aria-label="Reorderable list"
     >
